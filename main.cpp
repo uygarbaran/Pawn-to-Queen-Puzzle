@@ -7,7 +7,7 @@
 
 /*
  NOTES:
-    1) It is very difficult to store pointers to strings... You need to ensure you heap allocate them to not let them get freed after the scope and keeping track of things is very difficult...
+    1) BFS is used to find the first result that leads to the Queen in the final destination. Then we backtrack using pointers to the results and print them.
  */
 
 #include <iostream>
@@ -84,83 +84,7 @@ public:
         }
         
         return 0;
-    }
-    
-//    static void solvePuzzle()
-//    {
-////        int num_max_moves = solve();
-//        int min_number_of_moves = INT_MAX;
-//
-//        cout << "DOING DFS RIGHT NOW" << endl;
-//
-//        // Maps board state to a pair of <empty square index, number of moves to get to the state>
-//        unordered_map<string, pair<int, int>> states;
-//
-//        // Reserve 1,000,000 spaces
-//        states.reserve(1000000);
-//
-//        // Insert the initial state, initial index of the empty square, and the number of moves made into the hashmap
-//        states.emplace(initialState, make_pair(INITIAL_EMPTY_INDEX, 0));
-//
-//        // For DFS, use a stack to keep track of the next moves to go to.
-//        stack<string> s;
-//        s.push(initialState);
-//
-//        // For keeping track of the current state
-//        string curState;
-//
-//        while (!s.empty())
-//        {
-//            // Get the top of the stack and pop it
-//            curState = s.top();
-//            s.pop();
-//
-//            // Get the current states' value pair: <empty square index, number of moves up to now>
-//            pair<int, int> curVal = states.at(curState);
-//
-//            // Check if we won (note that this could be also done even before we get to the move...
-//            // basically while we are checking the next moves)
-//            if (curState.at(INITIAL_EMPTY_INDEX) == QUEEN)
-//            {
-//                // Print the final string
-//                min_number_of_moves = min(min_number_of_moves, curVal.second);
-////                cout << "Final board: " << curState << endl;
-////                cout << "Minimum number of moves to solve the puzzle: " << curVal.second << endl;
-////                return;
-//            }
-//            // We are at the max moves and we did not win, do not explore this option any further.
-////            else if (curVal.second >= num_max_moves)
-////            {
-////                continue;
-////            }
-//
-//            // DISPLAY THE BOARD
-//            if (num_of_runs < max_show_moves)
-//            {
-//                displayBoard(curState);
-//                num_of_runs++;
-//            }
-//
-//            // Get the next moves
-//            vector<pair<string, int>> nextMoves = getNextMoves(curState, curVal.first);
-//
-//            // Go through each of the next moves
-//            for (auto& [nextState, emptyInd] : nextMoves)
-//            {
-//                // If the move has not been played yet, play it (by adding it to the hashmap)
-//                // and add it to the queue to be explored later
-//                if (!states.count(nextState))
-//                {
-//                    s.push(nextState);
-//                    states.emplace(nextState, make_pair(emptyInd, curVal.second + 1));
-//                }
-//            }
-//        }
-//
-//        cout << "Minimum number of moves to solve the puzzle: " << min_number_of_moves << endl;
-//    }
-    
-    
+    } 
 
 private:
     /*
